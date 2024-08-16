@@ -1,0 +1,40 @@
+/* static/css/style.css */
+
+/* Hover effect for nav links */
+.nav-link {
+    color: #000; /* Default text color */
+}
+
+.nav-link:hover {
+    color: #007bff; /* Blue color on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Basic styles for footer links */
+.footer-link {
+    color: #007bff; /* Bootstrap primary color */
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.footer-link:hover {
+    color: #0056b3; /* Darker shade for hover effect */
+}
+
+/* Basic styles for social icons */
+.footer-icon-link {
+    color: #007bff;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.footer-icon-link:hover {
+    color: #0056b3; /* Darker shade for hover effect */
+}
+
+footer ul {
+    list-style-type: none; /* Removes the bullets from the list */
+    padding: 0;            /* Removes the padding */
+    margin: 0;             /* Removes the margin */
+}
+
