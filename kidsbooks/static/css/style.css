@@ -1,0 +1,40 @@
+/* static/css/style.css */
+
+
+.nav-link {
+    color: #000; 
+}
+
+.nav-link:hover {
+    color: #007bff; 
+    text-decoration: underline; 
+}
+
+/*  styles for footer links */
+.footer-link {
+    color: #007bff; 
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+.footer-link:hover {
+    color: #0056b3; 
+}
+
+
+.footer-icon-link {
+    color: #007bff;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.footer-icon-link:hover {
+    color: #0056b3; 
+}
+
+footer ul {
+    list-style-type: none; 
+    padding: 0;            
+    margin: 0;             
+}
+

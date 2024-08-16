@@ -25,11 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['8000-neerurathou-kidsbooksre-gwbnup8g8dp.ws.codeinstitute-ide.net',
-'herokuapp.com','127.0.0.1',
-'https://kids-books-review-3b6dc6d9b4c6.herokuapp.com',]
+
+ALLOWED_HOSTS = ['8000-neerurathou-kidsbooksre-gwbnup8g8dp.ws.codeinstitute-ide.net', '8000-neerurathou-kidsbooksre-k74b465f4cm.ws.codeinstitute-ide.net',
+'herokuapp.com','127.0.0.1', 'https://kids-books-review-3b6dc6d9b4c6.herokuapp.com',]
+
 
 
 # Application definition
