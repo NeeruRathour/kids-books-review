@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Kids Books
+{% endblock %}
+
+{% block content %} 
+
+<div class="container flex-column pt-3">
+    <section class="text-center">
+        <h1 class="main-title mx-auto"></h1>
+
+        <p class="pt-4">
+            List of kidbooks
+        </p>
+
+        <div class="row">
+            <!-- Book Entries Column -->
+            <div class="col-12 mt-3 left">
+                <div class="row">
+                    <!-- Display the list of books -->
+                    {% for kidsbook in kidsbooks %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <a href=" " class="book-link">
+                                    <h2 class="card-title">{{ kidsbook.title }}</h2>
+                                </a>
+                                <div class="image-container">
+                                    <div class="">
+                                        <p class="author">Author: {{ kidsbook.author }}</p>
+                                    </div>
+                                </div>
+                             
+                                {% if user.is_authenticated and book.user == user%}
+                                <a href="" class="btn btn-dark">Update book</a>
+                                <a href="" class="btn btn-danger">Delete book</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:3 %}
+                </div>
+                <div class="row">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+</div>
+
+{% endblock %}
