@@ -1,12 +1,37 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <h1>Kids books review website</h1>
+    <title>Home</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+</head>
+<body>
+     <!-- Include header -->
+     {% include 'includes/header.html' %}
+
+    <!-- Main content -->
+    <main role="main" class="container mt-4">
+        <div class="container flex-column pt-3">
+            <section class="text-center">
+                <h1 class="main-title mx-auto"></h1>
+                <p class="pt-4">Welcome to our home page</p>
+            </section>
+        </div>
+    </main>
+
+   <!-- Include footer -->
+   {% include 'includes/footer.html' %}
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
