@@ -1,27 +1,27 @@
 /* static/css/style.css */
 
-/* Hover effect for nav links */
+
 .nav-link {
-    color: #000; /* Default text color */
+    color: #000; 
 }
 
 .nav-link:hover {
-    color: #007bff; /* Blue color on hover */
-    text-decoration: underline; /* Underline on hover */
+    color: #007bff; 
+    text-decoration: underline; 
 }
 
-/* Basic styles for footer links */
+/*  styles for footer links */
 .footer-link {
-    color: #007bff; /* Bootstrap primary color */
+    color: #007bff; 
     text-decoration: none;
     padding: 0.5rem;
 }
 
 .footer-link:hover {
-    color: #0056b3; /* Darker shade for hover effect */
+    color: #0056b3; 
 }
 
-/* Basic styles for social icons */
+
 .footer-icon-link {
     color: #007bff;
     font-size: 1.5rem;
@@ -29,12 +29,12 @@
 }
 
 .footer-icon-link:hover {
-    color: #0056b3; /* Darker shade for hover effect */
+    color: #0056b3; 
 }
 
 footer ul {
-    list-style-type: none; /* Removes the bullets from the list */
-    padding: 0;            /* Removes the padding */
-    margin: 0;             /* Removes the margin */
+    list-style-type: none; 
+    padding: 0;            
+    margin: 0;             
 }
 
