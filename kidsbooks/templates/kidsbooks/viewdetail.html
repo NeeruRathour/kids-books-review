@@ -21,10 +21,9 @@ View book detail with reviews
             <div class="card-body">
                 <!-- We want a for loop inside the empty control tags
           to iterate through each review in reviews -->
+            {% if user.is_authenticated %}
                 {% for review in reviews %}
                 <div class="p-2 reviews
-          {% if not review.approved and review.user == user %}
-          faded{% elif not review.approved %} d-none{% endif %}">
                     <p class="font-weight-bold">
                         {{ review.user }}
                         <span class="">
@@ -53,8 +52,8 @@ View book detail with reviews
                 {% csrf_token %}
                 <button id="submitButton" type="submit" class="btn btn-signup btn-m">Submit</button>
             </form>
-
         </div>
+        {% endif %}
     </div>
 </div>
 

@@ -32,7 +32,7 @@ def kidsbook_detail(request, id):
             review.book = kidsbook
             review.save()
             messages.add_message(request, messages.SUCCESS,
-                                 'Review submitted and awaiting approval')
+                                 'Review submitted successfully')
     review_form = ReviewForm()
     context = {
         'kidsbook': kidsbook,
