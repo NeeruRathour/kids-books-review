@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load book_extras %}
 
 {% block title %}
 Kids Books
@@ -8,16 +8,15 @@ Kids Books
 
 {% block content %}
 
-View book detail with reviews
-<p>{{ kidsbook.title }}</p>
+<!-- View book detail with reviews -->
+<h2>{{ kidsbook.title }}</h2>
 
 {% if user.is_authenticated %}
 <div class="container">
-    <!-- Displaying Reviews -->
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
+        <div class="col-md-8 card mb-4 mt-3">
             <h3>Reviews:</h3>
-            <i class="far fa-comments"></i> {{ review_count }}
+            <i class="far fa-comments"></i> {{ reviews|length }} Reviews
             <div class="card-body">
                 <!-- We want a for loop inside the empty control tags
           to iterate through each review in reviews -->
@@ -25,38 +24,36 @@ View book detail with reviews
                 {% for review in reviews %}
                 <div class="p-2 reviews
                     <p class="font-weight-bold">
-                        {{ review.user }}
-                        <span class="">
-                            {{ review.created_on }}
-                        </span> wrote:
+                        {{ review.user }} <span>{{ review.created_on }}</span> wrote:
                     </p>
                     <div id="review{{ review.id }}">
                         {{ review.content | linebreaks }}
                     </div>
-                    
-                    {% if user.is_authenticated and review.user == user %}
-                    <button class="btn btn-dark btn-edit" data-review_id="{{ review.id }}">Edit</button>
-                    <button class="btn btn-danger btn-delete" data-review_id="{{ review.id }}">Delete</button>
+                    {% if review.user == user %}
+                    <a class="btn btn-dark" href="{% url 'edit_review' review.id %}">Edit</a>
+                    <form action="{% url 'delete_review' review.id %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                     {% endif %}
                 </div>
-                <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
+
         <!-- Creating New Reviews -->
         <div class="col-md-4 card mb-4 mt-3">
             <h3>Leave a review:</h3>
-            <p>Reviewing as :{{ user.username}}</p>
+            <p>Reviewing as: {{ user.username }}</p>
             <form id="reviewForm" method="post">
-                {{ review_form }}
                 {% csrf_token %}
+                {{ review_form.as_p }}
                 <button id="submitButton" type="submit" class="btn btn-signup btn-m">Submit</button>
             </form>
         </div>
         {% endif %}
     </div>
 </div>
-
 {% endif %}
 
 {% endblock %}

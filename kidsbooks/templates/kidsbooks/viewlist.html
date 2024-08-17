@@ -23,7 +23,7 @@
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <a href=" {% url 'kidsbook_detail' kidsbook.id %} " class="book-link">
+                                <a href="{% url 'kidsbook_detail' kidsbook.id %}" class="book-link">
                                     <h2 class="card-title">{{ kidsbook.title }}</h2>
                                 </a>
                                 <div class="image-container">
@@ -31,8 +31,22 @@
                                         <p class="author">Author: {{ kidsbook.author }}</p>
                                     </div>
                                 </div>
-                             
-                                {% if user.is_authenticated and kidsbook.user == user%}
+                                
+                                <!-- Display Average Rating -->
+                                <div class="rating">
+                                    {% if kidsbook.average_rating %}
+                                        <p>Average Rating: {{ kidsbook.average_rating|floatformat:1 }} Stars</p>
+                                        <div class="stars">
+                                            {% for i in "12345" %}
+                                                <span class="star {% if i <= kidsbook.average_rating|floatformat:0 %}filled{% endif %}">&#9733;</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        <p>No ratings yet.</p>
+                                    {% endif %}
+                                </div>
+                                
+                                {% if user.is_authenticated and kidsbook.user == user %}
                                 <a href="" class="btn btn-dark">Update book</a>
                                 <a href="" class="btn btn-danger">Delete book</a>
                                 {% endif %}
