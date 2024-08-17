@@ -23,7 +23,7 @@
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body">
-                                <a href=" " class="book-link">
+                                <a href=" {% url 'kidsbook_detail' kidsbook.id %} " class="book-link">
                                     <h2 class="card-title">{{ kidsbook.title }}</h2>
                                 </a>
                                 <div class="image-container">
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                              
-                                {% if user.is_authenticated and book.user == user%}
+                                {% if user.is_authenticated and kidsbook.user == user%}
                                 <a href="" class="btn btn-dark">Update book</a>
                                 <a href="" class="btn btn-danger">Delete book</a>
                                 {% endif %}

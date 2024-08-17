@@ -15,3 +15,12 @@ def kidsbook_list(request):
         'kidsbooks': kidsbooks
     }
     return render(request, 'kidsbooks/viewlist.html', context)
+
+def kidsbook_detail(request, id):
+    kidsbook = get_object_or_404(Kidsbook, id=id)
+    # reviews = Review.objects.filter(kidsbook=id)
+    context = {
+        'kidsbook': kidsbook,
+        # 'reviews': reviews
+    }
+    return render(request, 'kidsbooks/viewdetail.html', context)
