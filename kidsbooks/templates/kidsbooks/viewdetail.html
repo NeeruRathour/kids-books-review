@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load book_extras %}
 
 {% block title %}
 Kids Books
@@ -8,56 +8,86 @@ Kids Books
 
 {% block content %}
 
-View book detail with reviews
-<p>{{ kidsbook.title }}</p>
+<!-- View book detail with reviews -->
+<h2>{{ kidsbook.title }}</h2>
 
 {% if user.is_authenticated %}
 <div class="container">
-    <!-- Displaying Reviews -->
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
+        <div class="col-md-8 card mb-4 mt-3">
             <h3>Reviews:</h3>
-            <i class="far fa-comments"></i> {{ review_count }}
+            <i class="far fa-comments"></i> {{ reviews|length }} Reviews
             <div class="card-body">
-                <!-- We want a for loop inside the empty control tags
-          to iterate through each review in reviews -->
                 {% for review in reviews %}
-                <div class="p-2 reviews
-          {% if not review.approved and review.user == user %}
-          faded{% elif not review.approved %} d-none{% endif %}">
+                <div class="p-2 reviews {% if not review.approved and review.user == user %} faded {% elif not review.approved %} d-none {% endif %}">
                     <p class="font-weight-bold">
-                        {{ review.user }}
-                        <span class="">
-                            {{ review.created_on }}
-                        </span> wrote:
+                        {{ review.user }} <span>{{ review.created_on }}</span> wrote:
                     </p>
                     <div id="review{{ review.id }}">
                         {{ review.content | linebreaks }}
                     </div>
-                    
-                    {% if user.is_authenticated and review.user == user %}
-                    <button class="btn btn-dark btn-edit" data-review_id="{{ review.id }}">Edit</button>
-                    <button class="btn btn-danger btn-delete" data-review_id="{{ review.id }}">Delete</button>
+                    {% if review.user == user %}
+                    <a class="btn btn-dark" href="{% url 'edit_review' review.id %}">Edit</a>
+                    <form action="{% url 'delete_review' review.id %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                     {% endif %}
                 </div>
-                <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
+
         <!-- Creating New Reviews -->
         <div class="col-md-4 card mb-4 mt-3">
             <h3>Leave a review:</h3>
-            <p>Reviewing as :{{ user.username}}</p>
+            <p>Reviewing as: {{ user.username }}</p>
             <form id="reviewForm" method="post">
-                {{ review_form }}
                 {% csrf_token %}
+                {{ review_form.as_p }}
                 <button id="submitButton" type="submit" class="btn btn-signup btn-m">Submit</button>
             </form>
+        </div>
+    </div>
 
+    <!-- Rating System -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h3>Rate this book:</h3>
+            <form method="POST" action="{% url 'rate_book' kidsbook.id %}">
+                {% csrf_token %}
+                <label for="rating">Your rating:</label>
+                <select name="rating" id="rating" class="form-control w-25 d-inline-block">
+                    <option value="">Select...</option>
+                    {% for i in "12345" %}
+                    <option value="{{ i }}" {% if user|rating_for_book:kidsbook.id == i %}selected{% endif %}>{{ i }} Stars</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary">Submit Rating</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Display average rating -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h3>Average Rating:</h3>
+            <div>
+                {% if average_rating %}
+                    <p>Average Rating: {{ average_rating|floatformat:1 }} Stars</p>
+                    <!-- Star representation for avg review-->
+                    <div class="stars">
+                        {% for i in "12345" %}
+                            <span class="star {% if i <= average_rating|floatformat:0 %}filled{% endif %}">&#9733;</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>No ratings yet.</p>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
-
 {% endif %}
 
 {% endblock %}

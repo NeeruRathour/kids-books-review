@@ -43,3 +43,13 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review: {self.content} by {self.user} for {self.book}"
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Kidsbook, on_delete=models.CASCADE, related_name='ratings')
+    rating = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        unique_together = ('user', 'book')  
+    def __str__(self):
+        return f"{self.user.username} rated {self.book.title} with {self.rating} stars"

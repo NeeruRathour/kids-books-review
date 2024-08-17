@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Rate Book{% endblock %}
+
+{% block content %}
+  <h2>Rate "{{ book.title }}"</h2>
+  <form method="post">
+    {% csrf_token %}
+    <label for="rating">Your rating:</label>
+    <select name="rating" id="rating" class="form-control w-25 d-inline-block">
+      <option value="">Select...</option>
+      {% for i in "12345" %}
+        <option value="{{ i }}">{{ i }} Stars</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary">Submit Rating</button>
+  </form>
+  <a href="{% url 'kidsbook_detail' id=book.id %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}

@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['8000-neerurathou-kidsbooksre-gwbnup8g8dp.ws.codeinstitute-ide.net', '8000-neerurathou-kidsbooksre-k74b465f4cm.ws.codeinstitute-ide.net',
