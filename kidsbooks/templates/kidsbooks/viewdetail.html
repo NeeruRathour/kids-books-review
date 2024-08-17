@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Kids Books
+{% endblock %}
+
+{% block content %}
+
+View book detail with reviews
+<p>{{ kidsbook.title }}</p>
+
+{% if user.is_authenticated %}
+<div class="container">
+    <!-- Displaying Reviews -->
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3>Reviews:</h3>
+            <i class="far fa-comments"></i> {{ review_count }}
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags
+          to iterate through each review in reviews -->
+                {% for review in reviews %}
+                <div class="p-2 reviews
+          {% if not review.approved and review.user == user %}
+          faded{% elif not review.approved %} d-none{% endif %}">
+                    <p class="font-weight-bold">
+                        {{ review.user }}
+                        <span class="">
+                            {{ review.created_on }}
+                        </span> wrote:
+                    </p>
+                    <div id="review{{ review.id }}">
+                        {{ review.content | linebreaks }}
+                    </div>
+                    
+                    {% if user.is_authenticated and review.user == user %}
+                    <button class="btn btn-dark btn-edit" data-review_id="{{ review.id }}">Edit</button>
+                    <button class="btn btn-danger btn-delete" data-review_id="{{ review.id }}">Delete</button>
+                    {% endif %}
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Creating New Reviews -->
+        <div class="col-md-4 card mb-4 mt-3">
+            <h3>Leave a review:</h3>
+            <p>Reviewing as :{{ user.username}}</p>
+            <form id="reviewForm" method="post">
+                {{ review_form }}
+                {% csrf_token %}
+                <button id="submitButton" type="submit" class="btn btn-signup btn-m">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
