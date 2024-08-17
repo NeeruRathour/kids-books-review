@@ -1,8 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Home</title>
 
     <!-- Bootstrap CSS -->
@@ -21,9 +24,13 @@
         <div class="container flex-column pt-3">
             <section class="text-center">
                 <h1 class="main-title mx-auto"></h1>
-                <p class="pt-4">Welcome to our home page</p>
+                <p class="pt-4">Welcome to our website</p>
             </section>
         </div>
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+        
     </main>
 
    <!-- Include footer -->
@@ -33,5 +40,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
