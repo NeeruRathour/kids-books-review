@@ -1,0 +1,117 @@
+<!-- templates/about.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block title %}KidsBooks Reviews - About Us{% endblock %}
+
+{% block content %}
+<div>
+  
+    <!-- Who we are section start -->
+    <div class="container container-about bg-white box-shadow rounded-3 my-5">
+      <div class="container">
+        <h1 class="my-3 py-3">Who We Are</h1>
+        <p class="pb-1">
+          Welcome to KidsBooks Reviews, your go-to platform for discovering and sharing the joy of reading through the eyes of young readers. We are a community-driven site dedicated to helping parents, teachers, and children find the perfect books that will inspire a lifelong love of reading. Our mission is to curate and present a diverse collection of children’s literature, making it easier for you to choose books that resonate with kids of all ages and backgrounds.
+        </p>
+        <!-- Who we are section end -->
+        <div class="about-info my-2 p-2">
+          <div class="row">
+            <!-- Right column start -->
+            <div class="col-md-5">
+              <div class="about-info-img">
+                <div class="img" data-aos="fade-right">
+                  <img src="{% static 'images/about_us_image-1.jpg' %}" class="img-fluid" alt="Children reading books">
+                </div>
+              </div>
+              <h2 class="py-3 my-2">Our Mission</h2>
+              <p>
+                At KidsBooks Reviews, our aim is to foster a vibrant, inclusive community where readers and reviewers can share their thoughts on children’s books. We believe that every child deserves access to stories that reflect their experiences and open their minds to new possibilities. Through our platform, we hope to connect readers with books that not only entertain but also educate and empower.
+              </p><br>
+              <p>
+                Whether you’re a parent looking for bedtime stories, a teacher searching for classroom resources, or a young reader eager to find your next adventure, KidsBooks Reviews is here to help. We invite you to explore our reviews, share your own, and join us in celebrating the magic of reading.
+              </p>
+            </div>
+            <!-- Right column end -->
+            <!-- Left column start -->
+            <div class="col-md-6 offset-md-1">
+              <h2 class="py-3 my-2">Why KidsBooks Reviews?</h2>
+              <p>
+                We understand that finding the right book for a child can be challenging. That’s why we’ve created a space where you can find honest, detailed reviews written by fellow parents, educators, and young readers themselves. Our reviews cover a wide range of genres, age groups, and topics, ensuring there’s something for everyone.
+              </p>
+              <div class="about-info-img">
+                <div class="img my-4" data-aos="fade-left">
+                  <img src="{% static 'images/about_us_image-2.jpg' %}" class="img-fluid" alt="A collection of children's books">
+                </div>
+              </div>
+            </div>
+            <!-- Left column end -->
+            <!-- F.A.Q section start -->
+            <section>
+              <h2 class="my-4">Frequently Asked Questions</h2>
+              <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Who can contribute to reviews?
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      Anyone who loves children’s books and wants to share their experiences can contribute a review. Whether you're a parent, teacher, or a young reader, we value your insights.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      What kinds of books can I review?
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      You can review any book intended for children, from picture books to young adult novels. We encourage diversity in your selections, including different genres, cultures, and themes.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      How are reviews moderated?
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      All reviews are moderated to ensure they are constructive, respectful, and relevant. We aim to maintain a positive environment where all voices are heard and valued.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      Can I share my reviews on social media?
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      Absolutely! We encourage you to share your reviews on social media to help spread the word about great children's books. Just be sure to credit KidsBooks Reviews when you do!
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- F.A.Q section end -->
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>
+{% endblock %}

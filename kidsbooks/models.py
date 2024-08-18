@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.forms import IntegerField
 
 # Create your models here.
+
 class Kidsbook(models.Model):
     """
     Stores a single kids book entry related to :modle: =`auth.User`

@@ -1,6 +1,24 @@
 /* static/css/style.css */
 
+/* Ensure the HTML and body take up the full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+}
 
+/* Flexbox container for the whole page */
+.d-flex.flex-column.min-vh-100 {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+}
+
+/* Make the main content area grow to fill available space */
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+/* Navbar links styling */
 .nav-link {
     color: #000; 
 }
@@ -11,7 +29,25 @@
 }
 
 
-/*  styles for footer links */
+.stars {
+    font-size: 1.5rem; /* Adjust as needed */
+}
+
+.star {
+    color: #ddd; /* Default color for empty stars */
+    display: inline-block;
+}
+
+.star.filled {
+    color: #f5c518; /* Color for filled stars */
+}
+
+.star.empty {
+    color: #ddd; /* Color for empty stars */
+}
+
+
+/* Footer link styles */
 .footer-link {
     color: #007bff; 
     text-decoration: none;
@@ -22,7 +58,7 @@
     color: #0056b3; 
 }
 
-
+/* Footer icon link styling */
 .footer-icon-link {
     color: #007bff;
     font-size: 1.5rem;
@@ -33,9 +69,18 @@
     color: #0056b3; 
 }
 
+/* Ensure list styles are removed in the footer */
 footer ul {
     list-style-type: none; 
     padding: 0;            
     margin: 0;             
 }
 
+/* Footer should be a solid color to ensure it's clearly at the bottom */
+footer {
+    background-color: #f8f9fa; /* Light background for the footer */
+    border-top: 1px solid #eaeaea; /* Subtle border on the top of the footer */
+    padding: 1rem 0; /* Add some padding for spacing */
+    text-align: center; /* Center-align text in the footer */
+    width: 100%; /* Make sure the footer takes up the full width */
+}
