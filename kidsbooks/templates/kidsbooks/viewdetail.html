@@ -19,8 +19,11 @@ Kids Books
             <h3>Reviews:</h3>
             <i class="far fa-comments"></i> {{ reviews|length }} Reviews
             <div class="card-body">
+                <!-- We want a for loop inside the empty control tags
+          to iterate through each review in reviews -->
+            {% if user.is_authenticated %}
                 {% for review in reviews %}
-                <div class="p-2 reviews {% if not review.approved and review.user == user %} faded {% elif not review.approved %} d-none {% endif %}">
+                <div class="p-2 reviews
                     <p class="font-weight-bold">
                         {{ review.user }} <span>{{ review.created_on }}</span> wrote:
                     </p>
@@ -51,44 +54,7 @@ Kids Books
                 </button>
             </form>
         </div>
-    </div>
-
-    <!-- Rating System -->
-    <div class="row mt-4">
-        <div class="col-md-12">
-            <h3>Rate this book:</h3>
-            <form method="POST" action="{% url 'rate_book' kidsbook.id %}">
-                {% csrf_token %}
-                <label for="rating">Your rating:</label>
-                <select name="rating" id="rating" class="form-control w-25 d-inline-block">
-                    <option value="">Select...</option>
-                    {% for i in "12345" %}
-                    <option value="{{ i }}" {% if user|rating_for_book:kidsbook.id == i %}selected{% endif %}>{{ i }} Stars</option>
-                    {% endfor %}
-                </select>
-                <button type="submit" class="btn btn-primary">Submit Rating</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Display average rating -->
-    <div class="row mt-4">
-        <div class="col-md-12">
-            <h3>Average Rating:</h3>
-            <div>
-                {% if average_rating %}
-                    <p>Average Rating: {{ average_rating|floatformat:1 }} Stars</p>
-                    <!-- Star representation for avg review-->
-                    <div class="stars">
-                        {% for i in "12345" %}
-                            <span class="star {% if i <= average_rating|floatformat:0 %}filled{% endif %}">&#9733;</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <p>No ratings yet.</p>
-                {% endif %}
-            </div>
-        </div>
+        {% endif %}
     </div>
 </div>
 {% endif %}
