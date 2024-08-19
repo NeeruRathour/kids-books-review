@@ -9,6 +9,15 @@ from .forms import KidsbookForm, ReviewForm
 from .models import Kidsbook, Review, Rating
 
 # Create your views here.
+
+def index(request):
+    books = Kidsbook.objects.all()  
+    return render(request, 'home/index.html', {'books': books})
+
+def about_us(request):
+    return render(request, 'aboutus.html')
+
+
 def kidsbook_list(request):
     kidsbooks = Kidsbook.objects.all()
 
@@ -29,20 +38,20 @@ def kidsbook_detail(request, id):
     # Calculate average rating for the book
     average_rating = kidsbook.ratings.aggregate(Avg('rating'))['rating__avg'] or 0.0
 
-    if request.method == "POST":
+    if request.method == "POST" and request.user.is_authenticated:
         review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
             review = review_form.save(commit=False)
             review.user = request.user
             review.book = kidsbook
             review.save()
-            messages.add_message(request, messages.SUCCESS,
-                                 'Review submitted successfully.')
-
+            messages.add_message(request, messages.SUCCESS, 'Review submitted successfully.')
             # After submitting the review, recalculate the average rating
             average_rating = kidsbook.ratings.aggregate(Avg('rating'))['rating__avg'] or 0.0
+        return redirect('kidsbook_detail', id=id)
 
-    review_form = ReviewForm()
+    review_form = ReviewForm() if request.user.is_authenticated else None
+
     context = {
         'kidsbook': kidsbook,
         'reviews': reviews,
@@ -91,6 +100,7 @@ def delete_review(request, review_id):
     }
     return render(request, 'kidsbooks/delete_review.html', context)
 
+
 @login_required
 def rate_book(request, book_id):
     book = get_object_or_404(Kidsbook, id=book_id)
@@ -104,20 +114,23 @@ def rate_book(request, book_id):
                 rating, created = Rating.objects.get_or_create(user=request.user, book=book)
                 rating.rating = rating_value
                 rating.save()
-            
+
+                # Recalculate average rating
+                average_rating = book.ratings.aggregate(Avg('rating'))['rating__avg'] or 0.0
+
+                # Update context and redirect
+                return HttpResponseRedirect(reverse('kidsbook_detail', args=[book_id]))
+
         except ValueError:
-            
             pass
         
-        return redirect('kidsbook_detail', id=book_id)
-
     context = {
         'book': book
     }
     return render(request, 'kidsbooks/rate_book.html', context)
 
-def about_us(request):
-    return render(request, 'aboutus.html')
+
+
 
 @login_required
 def my_reviews(request):

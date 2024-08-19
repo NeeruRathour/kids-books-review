@@ -32,6 +32,7 @@
                     <thead>
                         <tr>
                             <th>Book Title</th>
+                            <th>Author</th>
                             <th>Content</th>
                             <th>Rating</th>
                             <th>Review Date</th>
@@ -42,6 +43,7 @@
                         {% for review in reviews %}
                         <tr>
                             <td>{{ review.book.title }}</td>
+                            <td>{{ review.book.author }}</td>
                             <td>{{ review.content }}</td>
                             <td>
                                 <!-- Display Average Rating -->
