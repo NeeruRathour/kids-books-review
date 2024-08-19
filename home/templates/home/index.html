@@ -1,19 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
 
-{% block title %}Home{% endblock %} 
-
-
-{% block content %} 
-
+{% block content %}
 <div class="container flex-column pt-3">
+    <!-- Welcome Section -->
     <section class="text-center">
-        <h1 class="main-title mx-auto"></h1>
-
+        <h1 class="main-title mx-auto">Welcome to KidsBooks Review</h1>
         <p class="pt-4">
-            Welcome to our home page
+            Explore our collection of children’s books, read reviews, and rate your favorites. Whether you’re a parent, teacher, or a young reader, our platform offers a wealth of information to help you choose the best books.
         </p>
     </section>
-    
-</div>
 
+    <!-- Sample Book Image Section -->
+    <section class="text-center mt-5">
+        <h2 class="mb-4">Featured Book</h2>
+        <div class="d-flex justify-content-center">
+            <img src="{% static 'images/sample_book.jpg' %}" class="img-fluid" alt="Sample Book">
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="text-center mt-5">
+        <h2 class="mb-4">About Us</h2>
+        <p>
+            At KidsBooks Review, we are passionate about children’s literature. Our mission is to provide a comprehensive platform where you can find, review, and discuss books for young readers.
+        </p>
+        <a href="{% url 'about_us' %}" class="btn btn-info">Learn More</a>
+    </section>
+</div>
 {% endblock %}

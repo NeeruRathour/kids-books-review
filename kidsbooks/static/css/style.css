@@ -1,19 +1,67 @@
 /* static/css/style.css */
 
-/* Ensure the HTML and body take up the full height of the viewport */
 html, body {
     height: 100%;
     margin: 0;
 }
 
+/* General Heading Styles */
+h1, h2 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Main Title Style (h1) */
+.main-title {
+    font-size: 2.5rem;
+    color: #0056b3; 
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    border-bottom: 3px solid #0056b3;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* Featured Book Section Title (h2) */
+.mt-5 > h2 {
+    font-size: 2rem;
+    color: #006400; 
+    font-weight: 700;
+    text-transform: capitalize;
+    border-bottom: 2px solid #006400;
+    padding-bottom: 0.5rem;
+}
+
+/* About_Us Section Title (h2) */
+.mt-5 + section > h2 {
+    font-size: 2rem;
+    color: #007bff; 
+    font-weight: 700;
+    text-transform: capitalize;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+/* Remove underline  within the  .card-title */
+.card-title a {
+    text-decoration: none;
+}
+
+
 /* Flexbox container for the whole page */
 .d-flex.flex-column.min-vh-100 {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensure the container takes up at least the full viewport height */
+    min-height: 100vh; 
 }
 
-/* Make the main content area grow to fill available space */
 .flex-grow-1 {
     flex-grow: 1;
 }
@@ -30,20 +78,20 @@ html, body {
 
 
 .stars {
-    font-size: 1.5rem; /* Adjust as needed */
+    font-size: 1.5rem; 
 }
 
 .star {
-    color: #ddd; /* Default color for empty stars */
+    color: #ddd; 
     display: inline-block;
 }
 
 .star.filled {
-    color: #f5c518; /* Color for filled stars */
+    color: #f5c518; 
 }
 
 .star.empty {
-    color: #ddd; /* Color for empty stars */
+    color: #ddd; 
 }
 
 
@@ -69,18 +117,18 @@ html, body {
     color: #0056b3; 
 }
 
-/* Ensure list styles are removed in the footer */
+
 footer ul {
     list-style-type: none; 
     padding: 0;            
     margin: 0;             
 }
 
-/* Footer should be a solid color to ensure it's clearly at the bottom */
+
 footer {
-    background-color: #f8f9fa; /* Light background for the footer */
-    border-top: 1px solid #eaeaea; /* Subtle border on the top of the footer */
-    padding: 1rem 0; /* Add some padding for spacing */
-    text-align: center; /* Center-align text in the footer */
-    width: 100%; /* Make sure the footer takes up the full width */
+    background-color: #f8f9fa; 
+    border-top: 1px solid #eaeaea; 
+    padding: 1rem 0; 
+    text-align: center; 
+    width: 100%; 
 }

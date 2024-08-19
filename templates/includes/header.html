@@ -23,6 +23,9 @@
             </li>
             {% else %}
             <li class="nav-item">
+                <a class="nav-link" href="{% url 'about_us' %}">About Us</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page" href="{% url 'account_signup' %}">Register</a>
             </li>
             <li class="nav-item">

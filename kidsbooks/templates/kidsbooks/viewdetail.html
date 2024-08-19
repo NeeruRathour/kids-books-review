@@ -17,35 +17,52 @@ Kids Books
 {% if user.is_authenticated %}
 <div class="container">
     <div class="row">
-        <!-- Book Reviews -->
         <div class="col-md-8 card mb-4 mt-3">
+            <h3>Author: {{ kidsbook.author }}</h3>
+            <div class="card-body">
+                <!-- Book description or other details can go here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reviews Section -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 card mb-4 mt-3">
             <h3>Reviews:</h3>
             <i class="far fa-comments"></i> {{ reviews|length }} Reviews
             <div class="card-body">
-                <!-- We want a for loop inside the empty control tags
-          to iterate through each review in reviews -->
-            {% if user.is_authenticated %}
-                {% for review in reviews %}
-                <div class="p-2 reviews
-                    <p class="font-weight-bold">
-                        {{ review.user }} <span>{{ review.created_on }}</span> wrote:
-                    </p>
-                    <div id="review{{ review.id }}">
-                        {{ review.content | linebreaks }}
+                {% if reviews %}
+                    {% for review in reviews %}
+                    <div class="p-2 reviews">
+                        <p class="font-weight-bold">
+                            {{ review.user }} <span>{{ review.created_on }}</span> wrote:
+                        </p>
+                        <div id="review{{ review.id }}">
+                            {{ review.content|linebreaks }}
+                        </div>
+                        {% if user.is_authenticated and review.user == user %}
+                        <a class="btn btn-dark" href="{% url 'edit_review' review.id %}">Edit</a>
+                        <form action="{% url 'delete_review' review.id %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        {% endif %}
                     </div>
-                    {% if review.user == user %}
-                    <a class="btn btn-dark" href="{% url 'edit_review' review.id %}">Edit</a>
-                    <form action="{% url 'delete_review' review.id %}" method="POST" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                    {% endif %}
-                </div>
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <p>No reviews yet.</p>
+                {% endif %}
             </div>
         </div>
+    </div>
+</div>
 
-        <!-- Creating or Editing a Review -->
+<!-- Review Form (Visible only to authenticated users) -->
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
         <div class="col-md-4 card mb-4 mt-3">
             <h3>{% if existing_review %}Edit your review:{% else %}Leave a review:{% endif %}</h3>
             <p>Reviewing as: {{ user.username }}</p>
@@ -57,9 +74,53 @@ Kids Books
                 </button>
             </form>
         </div>
-        {% endif %}
     </div>
 </div>
 {% endif %}
+
+<!-- Rating System -->
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            {% if user.is_authenticated %}
+                <h3>Rate this book:</h3>
+                <form method="POST" action="{% url 'rate_book' kidsbook.id %}">
+                    {% csrf_token %}
+                    <label for="rating">Your rating:</label>
+                    <select name="rating" id="rating" class="form-control w-25 d-inline-block">
+                        <option value="">Select...</option>
+                        {% for i in "12345" %}
+                        <option value="{{ i }}" {% if user|rating_for_book:kidsbook.id == i %}selected{% endif %}>{{ i }} Stars</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary mt-2">Submit Rating</button>
+                </form>
+            {% else %}
+            <p><a href="{% url 'account_login' %}">Log in to rate this book.</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Display average rating -->
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h3>Average Rating:</h3>
+            <div>
+                {% if average_rating %}
+                    <p>Average Rating: {{ average_rating|floatformat:1 }} Stars</p>
+                    <div class="stars">
+                        {% for i in "12345" %}
+                            <span class="star {% if i <= average_rating|floatformat:0 %}filled{% else %}empty{% endif %}">&#9733;</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>No ratings yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
