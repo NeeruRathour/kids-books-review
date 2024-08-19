@@ -3,14 +3,10 @@
 
 ## Introduction
 
- The Kids Kids Books Reviews Review project is focused on safeguarding vulnerable individuals, especially children, from the threat of radicalization, akin to how other forms of harm are addressed in safeguarding efforts. The project aims to foster a safe community by providing tools to help monitor, review, and analyze content that may influence young minds.
+ Welcome to KidsBooks Reviews, the ultimate platform for discovering and sharing the joy of children's literature. Our mission is to foster a vibrant, inclusive community where parents, teachers, and young readers can find, review, and discuss books that inspire and educate. We are dedicated to curating a diverse collection of children's literature, making it easier to choose books that resonate with kids of all ages and backgrounds.
 
 ##   Project Overview
-In today's world, protecting communities from radicalization is just as critical as any other form of safeguarding. This project aims to provide a platform that not only reviews children's Kids Books Reviews but also monitors the content for any potentially harmful or radicalizing material.
-
-This project is designed to help parents, educators, and community members identify books that are safe, educational, and free from radicalizing content, while also offering an interface to flag or report questionable material.
-
-![Responsive Mockup](documentation/screenshots/Screenshot1.responsive.webp)
+KidsBooks Reviews is designed to provide a comprehensive and user-friendly environment for reviewing and rating children's books. After signing up and logging in, users can interact with the platform by adding their own reviews, modifying their ratings, and managing their content. Our goal is to help users find quality literature and engage with the book community through honest and insightful reviews.
 
 [Link to the live site](https://book-shelf-e3665f129252.herokuapp.com/)
 
@@ -23,23 +19,16 @@ This project is designed to help parents, educators, and community members ident
 * [Deployment](#deployment)
 * [Credits](#credits)
 
-## Database plan
-## Data structure in Lucichart
-
-![Datastructure Mockup](documentation/screenshots/Screenshot2_datamodel.webp)
-
 - After project purpose decided, lucichart is used to implement and plan the database structure.
-- The above diagram is serving as an guide to indicate the field types and relationships between data stored in database.
 
 ## Data models
 
 - User model
  - -  Django pre-defined class-based model. Username and password implemented to login.
-- Book model
- - - | title | CharField | | pages | integerField | | author | CharField | | description | TextField | | created_on | DateTimeField | | approval | BooleanField | | category | ForeignKey | | updated_on | DateTimeField | | image | CloudinaryField || user | ForeignKey |
+
 - Review model
  - - | book | ForeignKey | | user | ForeignKey | | content | TextField | | created_on | DateTimeField | | approval | BooleanField |
-- Category model
+- Ratings model
  - -  | book | ForeignKey | | name | CharField |
 
 [Back to Top](#top)
@@ -49,42 +38,23 @@ This project is designed to help parents, educators, and community members ident
 
 ## Overview
 
-The UX design focuses on creating an engaging and welcoming environment. After signup and logging in, the site user would be able to add a new book they would like to share with other users and add a review to any books. They can search book by book name key words, book author key words or book 4 categories(Fiction,Non_fiction,Science_fiction and Children'S&Teenage).
+KidsBooks Reviews is a platform designed to help parents, teachers, and young readers discover and share the joy of children's literature. Our focus is on creating a vibrant, user-driven community where you can review and rate books, providing valuable insights for other users. After signing up and logging in, users can engage with featured books by adding their own reviews and ratings.
 
 ## Site User
-Once the project is set up, you can start using the platform to review books and monitor content. Here’s how you can get started:
 
-- Sign Up / Login: Create an account or log in if you already have one.
-- Browse Books: Navigate through the list of books available on the platform.
-- Review a Book: Click on a book and leave a review or rating based on its content.
-- Flag Content: If you notice any questionable content, use the flagging feature to report it.
-Access Resources: Visit the resources section for educational materials and guides.
+Once you have set up your account, you can start using the platform to review books and manage your content. Here’s how you can get started:
 
+- **Sign Up / Login:** Create an account or log in if you already have one.
+- **Review a Book:** Select a book to leave a review or rating based on its content and your experience.
+- **Manage Your Reviews:** Edit or delete your own reviews and modify your ratings as needed.
+- **Explore Content:** Browse and search for books by title, author, or category to find the perfect read.
 
-## Purposes for the site
- This project is designed to help parents, educators, and community members identify books that are safe, educational, and free from radicalizing content, while also offering an interface to flag or report questionable material.
+## Purposes for the Site
+KidsBooks Reviews aims to provide a reliable resource for discovering high-quality children’s literature. Our project supports parents, educators, and community members in finding books that are both educational and engaging, ensuring that each child finds stories that resonate with them.
 
-
-
-## Wireframes created in Balsamic
-- Home Page for mobile screen
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_homepage_mobilescreen.webp)
-
-- Home Page for pad/laptop screen
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_homepage_padlaptopscreen.webp)
-
-- About Page
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_aboutpage.webp)
-
-- Book detail page for logged in user
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_bookdetail_loggedin.webp)
-
-- Add a book page for logged in user
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_addbook_loggedin.webp)
-
+           
 ### Colour schemes
-The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b295-191516-ab2346) as below:
-![Colourscheme Mockup](documentation/colour-palette/color_scheme.webp)
+The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b295-191516-ab2346) 
 
 ### Font
 [Googlefont](https://fonts.google.com/) of Lato used.
@@ -98,7 +68,6 @@ The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b2
 
 In the development life-cycle of Kids Books Review, Agile methodology was used to ensure iterative and efficient progress throughout the project development. Central to this approach was the utilization of a Kanban board hosted on GitHub Projects. You can view the project board as: [KANBAN Board](https://github.com/users/NeeruRathour/projects/6).
 
- -![Kanban Mockup](documentation/screenshots/Kanban_board.webp)
 
 ### Kanban overview
 The Kanban board served as a visual representation of the project's progress and allowed for effective task management. It consisted of the following sections:
@@ -115,52 +84,32 @@ In addition to tracking user stories, the Kanban board served as a comprehensive
 
 By leveraging Agile principles and utilizing the Kanban board effectively, the development of Kids Books Review remained focused, adaptable, and responsive to evolving requirements, resulting in a more robust and user-centric Django application.
 
-## User Stories Overview
-### List of User Stories
-
-
-
-
-- [#1 View comments/reviews ](https://github.com/NeeruRathour/kids-books-review/issues/3)
-- [#2 Account registration ](https://github.com/NeeruRathour/kids-books-review/issues/4)
-- [#3 Post a review on book ](https://github.com/NeeruRathour/kids-books-review/issues/5)
-- [#4 Modify or delete reviews of a book ](https://github.com/NeeruRathour/kids-books-review/issues/6)
-- [#5 View list of books ](https://github.com/NeeruRathour/kids-books-review/issues/1)
-- [#6 click on book for details ](https://github.com/NeeruRathour/kids-books-review/issues/2)
-
-
-### MOSCOW Details
-- MO (Book CRUD | Review CRUD | Account registration | )
-- S ( Approve book reviews | Approve book | About page | Search book)
-- CO (View paginated books | Templates styling | )
-- W (Log in via social media account | Profile page)
 
 [Back to Top](#top)
 
 # Features
 
--  Book Reviews: Users can review and rate children's Kids Books Reviews based on their content, educational value, and overall impact on young readers.
--   Content Monitoring: The platform offers automated tools to scan and analyze text for any signs of radicalization or harmful ideologies.
--   Community Flagging: Members of the community can flag content that they find concerning, which will then be reviewed by moderators.
--   Educational Resources: Provides resources and guides for parents and educators on how to discuss sensitive topics with children.
+- **Book Reviews:** Users can submit and view reviews and ratings for children's books. Ratings are averaged to reflect the book’s overall reception.
+- **Review Management:** Users can create, read, edit, and delete their own reviews. They can also modify their ratings for previously reviewed books.
+- **Content Moderation:** The platform includes tools for monitoring and managing submitted content to ensure quality and relevance.
 
 
-## Features implemented
+## Features Implemented
 
-- Full CRUD on review of a Kids Books Review: the logged-in site user can create, read, edit and delete their review on a Kids Books Review
-- Full CRUD on a Kids Books Review: the logged-in site user can create,read,edit and delete their Kids Books Review
-- Search a Kids Books Review via key words in Kids Books Review title or Kids Books Review author or 4 categories(Fiction,Non_fiction,Science_fiction and Children's&Teenage Kids Books Reviews)
-- The site admin maintain the submitted Kids Books Reviews and reviews of specific Kids Books Reviews.
+- **Full CRUD Operations on Reviews:** Logged-in users can create, read, edit, and delete their own reviews and ratings.
+- **Admin Controls:** Site administrators can maintain and oversee submitted book reviews and entries.
 
-- ![Kids Books Review Mockup](documentation/screenshots/Kids Books Review_add.webp)
-- ![Kids Books Review_rud Mockup](documentation/screenshots/Kids Books Review_rud.webp)
-- ![review_crud](documentation/screenshots/reviews_crud.webp)
-- ![search](documentation/screenshots/search.webp)
+## Getting Started
+
+1. **Sign Up / Login:** Register for an account or log in to access full features.
+2. **Browse Books:** Explore our collection and select books to review.
+3. **Submit Reviews:** Add your reviews and ratings for books you’ve read.
+4. **Manage Content:** Edit or remove your reviews and ratings as needed.
 
 ### Navbar and Footer:
 - Unified Navbar and footer on every page
 - Navbar's changes as signing in status,logged in user can see add a Kids Books Review tab
-- Footer includes social links and github links
+- Footer includes copyrights and about us links. 
 
 ### Index page:
 - The homepage provides the list of Kids Books Reviews
@@ -181,45 +130,22 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
     - Given a logged-in site user, view the summary list of Kids Books Reviews and reviews user submitted in a seperate page.
     - Given a logged-in site user, view the status of the Kids Books Reviews and reviews user submitted.
     - Given a logged-in site user, user can check and update their name and password.
-
+- Search Functionality
+    - Given a logged-in site user, user can find books by keywords in the title, author, or by category (Fiction, Non-Fiction, Science Fiction, Children's & Teenage Books).
 [Back to Top](#top)
 
 # Testing 
 
 ## Validation
 ### HTML
-[W3 HTML Validator](https://validator.w3.org/) to check the HTML
-screenshot
+[W3 HTML Validator](https://validator.w3.org/) 
 
 ### CSS
-[W3 CSS Validator](https://jigsaw.w3.org/css-validator/) to check the CSS
-screenshot
+[W3 CSS Validator](https://jigsaw.w3.org/css-validator/) 
 
 ### Python
-[CI Python Linter](https://pep8ci.herokuapp.com/) to check python scripts
-screenshot
+[CI Python Linter](https://pep8ci.herokuapp.com/) 
 
-## Manual test
-### Home page
-Test Result
-
-### About page
-Test Result
-
-### Footer/NAVBar
-Test Result
-
-### Login/logout/registration page
-Test Result
-
-### Review CRUD
-Test Result
-
-### Kids Books Review CRUD
-Test Result
-
-### Search a Kids Books Review
-Test Result
 
 [Back to Top](#top)
 
