@@ -29,7 +29,7 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = ['8000-neerurathou-kidsbooksre-gwbnup8g8dp.ws.codeinstitute-ide.net', '8000-neerurathou-kidsbooksre-k74b465f4cm.ws.codeinstitute-ide.net',
-'herokuapp.com','127.0.0.1', 'https://kids-books-review-3b6dc6d9b4c6.herokuapp.com','kids-books-review-3b6dc6d9b4c6.herokuapp.com',]
+'herokuapp.com','127.0.0.1', 'https://kids-books-review-3b6dc6d9b4c6.herokuapp.com',]
 
 
 
