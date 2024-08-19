@@ -23,8 +23,7 @@
         <!-- Include header -->
         {% include 'includes/header.html' %}
          {% if user.is_authenticated %}
-        <p class="center">Welcomet to this site, {{use
-            r}}</p>
+        <p class="center">Welcomet to this site, {{user}}</p>
         {% else %}
         <p class="center">Please log in for reviews</p>
         {% endif %}
