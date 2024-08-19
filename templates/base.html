@@ -22,6 +22,14 @@
     <div class="d-flex flex-column min-vh-100">
         <!-- Include header -->
         {% include 'includes/header.html' %}
+         {% if user.is_authenticated %}
+        <p class="center">Welcomet to this site, {{use
+            r}}</p>
+        {% else %}
+        <p class="center">Please log in for reviews</p>
+        {% endif %}
+
+
 
         <!-- Display Django messages -->
         {% if messages %}
