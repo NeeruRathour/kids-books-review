@@ -8,10 +8,12 @@
 ##   Project Overview
 KidsBooks Reviews is designed to provide a comprehensive and user-friendly environment for reviewing and rating children's books. After signing up and logging in, users can interact with the platform by adding their own reviews, modifying their ratings, and managing their content. Our goal is to help users find quality literature and engage with the book community through honest and insightful reviews.
 
-[Link to the live site](https://book-shelf-e3665f129252.herokuapp.com/)
+[Link to the live site](https://kids-books-review-3b6dc6d9b4c6.herokuapp.com/)
+
+[Link to responsive design](https://ui.dev/amiresponsive?url=https://kids-books-review-3b6dc6d9b4c6.herokuapp.com/)
 
 ## Index – Table of Contents
-* [User Experience (UX)](#ser-experience-ux) 
+* [User Experience (UX)](#user-experience-ux) 
 * [Agile](#agile)
 * [Features](#features)
 * [Technologies Used](#technologies-used)
@@ -21,17 +23,21 @@ KidsBooks Reviews is designed to provide a comprehensive and user-friendly envir
 
 - After project purpose decided, lucichart is used to implement and plan the database structure.
 
-## Data models
+### Data Models
 
-- User model
- - -  Django pre-defined class-based model. Username and password implemented to login.
+- **User model**
+  - Django pre-defined class-based model. Username and password implemented to login.
 
-- Review model
- - - | book | ForeignKey | | user | ForeignKey | | content | TextField | | created_on | DateTimeField | | approval | BooleanField |
-- Ratings model
- - -  | book | ForeignKey | | name | CharField |
+- **Review model**
+  - | `book`       | ForeignKey  |
+  - | `user`       | ForeignKey  |
+  - | `content`    | TextField   |
+  - | `created_on` | DateTimeField |
+  - | `approval`   | BooleanField |
 
-[Back to Top](#top)
+- **Ratings model**
+  - | `book`       | ForeignKey  |
+  - | `name`       | CharField   |
 
 
 # user-experience-ux
@@ -59,8 +65,6 @@ The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b2
 ### Font
 [Googlefont](https://fonts.google.com/) of Lato used.
 
-[Back to Top](#top)
-
 
 # agile
 
@@ -84,8 +88,6 @@ In addition to tracking user stories, the Kanban board served as a comprehensive
 
 By leveraging Agile principles and utilizing the Kanban board effectively, the development of Kids Books Review remained focused, adaptable, and responsive to evolving requirements, resulting in a more robust and user-centric Django application.
 
-
-[Back to Top](#top)
 
 # Features
 
@@ -132,7 +134,6 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
     - Given a logged-in site user, user can check and update their name and password.
 - Search Functionality
     - Given a logged-in site user, user can find books by keywords in the title, author, or by category (Fiction, Non-Fiction, Science Fiction, Children's & Teenage Books).
-[Back to Top](#top)
 
 # Testing 
 
@@ -146,8 +147,6 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 ### Python
 [CI Python Linter](https://pep8ci.herokuapp.com/) 
 
-
-[Back to Top](#top)
 
 # technologies-used
 The technologies implemented in this application included HTML5, CSS, Bootstrap, Javascript , Python , PostgreSQL , Heroku and Django.
@@ -174,7 +173,6 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 
 - Google,Stack Overflow and ChatGPT utilized for general research or solving a bug, information gathering, and various online tools.
 
-[Back to Top](#top)
 
 # Deployment
 
@@ -225,7 +223,6 @@ Creating a clone enables you to make a local copy of the repository. Steps are a
 - Open your terminal and change the directory to your desired location.
 - Use git clone followed by the copied repository URL.
 
-[Back to Top](#top)
 
 # Credits
 ## Images 
