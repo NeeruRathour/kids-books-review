@@ -14,17 +14,7 @@ Kids Books
 <p>{{ kidsbook.author }}</p>
 <p>{{ kidsbook.description }}</p>
 
-{% if user.is_authenticated %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 card mb-4 mt-3">
-            <h3>Author: {{ kidsbook.author }}</h3>
-            <div class="card-body">
-                <!-- Book description or other details can go here -->
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!-- Reviews Section -->
 <div class="container">
@@ -59,8 +49,8 @@ Kids Books
     </div>
 </div>
 
-<!-- Review Form (Visible only to authenticated users) -->
 {% if user.is_authenticated %}
+<!-- Review Form (Visible only to authenticated users) -->
 <div class="container">
     <div class="row">
         <div class="col-md-4 card mb-4 mt-3">
@@ -123,4 +113,5 @@ Kids Books
     </div>
 </div>
 
-{% endblock %}
+
+{% endblock content %}
