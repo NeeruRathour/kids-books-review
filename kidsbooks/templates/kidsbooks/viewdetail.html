@@ -11,7 +11,10 @@ Kids Books
 <!-- View book detail with reviews -->
 <h2>{{ kidsbook.title }}</h2>
 
-<!-- Book Details -->
+<p>{{ kidsbook.author }}</p>
+<p>{{ kidsbook.description }}</p>
+
+{% if user.is_authenticated %}
 <div class="container">
     <div class="row">
         <div class="col-md-8 card mb-4 mt-3">
