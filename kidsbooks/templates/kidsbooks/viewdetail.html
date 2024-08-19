@@ -14,6 +14,7 @@ Kids Books
 {% if user.is_authenticated %}
 <div class="container">
     <div class="row">
+        <!-- Book Reviews -->
         <div class="col-md-8 card mb-4 mt-3">
             <h3>Reviews:</h3>
             <i class="far fa-comments"></i> {{ reviews|length }} Reviews
@@ -41,14 +42,16 @@ Kids Books
             </div>
         </div>
 
-        <!-- Creating New Reviews -->
+        <!-- Creating or Editing a Review -->
         <div class="col-md-4 card mb-4 mt-3">
-            <h3>Leave a review:</h3>
+            <h3>{% if existing_review %}Edit your review:{% else %}Leave a review:{% endif %}</h3>
             <p>Reviewing as: {{ user.username }}</p>
             <form id="reviewForm" method="post">
                 {% csrf_token %}
                 {{ review_form.as_p }}
-                <button id="submitButton" type="submit" class="btn btn-signup btn-m">Submit</button>
+                <button id="submitButton" type="submit" class="btn btn-signup btn-m">
+                    {% if existing_review %}Update Review{% else %}Submit Review{% endif %}
+                </button>
             </form>
         </div>
         {% endif %}

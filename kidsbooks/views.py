@@ -12,25 +12,23 @@ from .models import Kidsbook, Review, Rating
 def kidsbook_list(request):
     kidsbooks = Kidsbook.objects.all()
 
+    # Calculate average rating for each book
     for book in kidsbooks:
-        book.average_rating = book.ratings.aggregate(Avg('rating'))['rating__avg']
+        book.average_rating = book.ratings.aggregate(average_rating=Avg('rating'))['average_rating'] or 0.0
 
-    print(kidsbooks)
     context = {
         'kidsbooks': kidsbooks
     }
     return render(request, 'kidsbooks/viewlist.html', context)
 
+
 def kidsbook_detail(request, id):
     kidsbook = get_object_or_404(Kidsbook, id=id)
-    # reviews = Review.objects.filter(kidsbook=id)
-
     reviews = kidsbook.kidsbook_reviews.all()
-    average_rating = kidsbook.ratings.aggregate(Avg('rating'))['rating__avg']
 
+    # Calculate average rating for the book
+    average_rating = kidsbook.ratings.aggregate(Avg('rating'))['rating__avg'] or 0.0
 
-    # Save submitted review to the specific book and
-    # send messages after submission
     if request.method == "POST":
         review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
@@ -39,7 +37,11 @@ def kidsbook_detail(request, id):
             review.book = kidsbook
             review.save()
             messages.add_message(request, messages.SUCCESS,
-                                 'Review submitted successfully')
+                                 'Review submitted successfully.')
+
+            # After submitting the review, recalculate the average rating
+            average_rating = kidsbook.ratings.aggregate(Avg('rating'))['rating__avg'] or 0.0
+
     review_form = ReviewForm()
     context = {
         'kidsbook': kidsbook,
@@ -52,7 +54,7 @@ def kidsbook_detail(request, id):
 @login_required
 def edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
-    
+
     if review.user != request.user:
         return HttpResponseForbidden("You are not allowed to edit this review.")
 
@@ -113,3 +115,27 @@ def rate_book(request, book_id):
         'book': book
     }
     return render(request, 'kidsbooks/rate_book.html', context)
+
+def about_us(request):
+    return render(request, 'aboutus.html')
+
+@login_required
+def my_reviews(request):
+    try:
+        # Fetch reviews for the current user and order by 'created_on'
+        reviews = Review.objects.filter(user=request.user).order_by('-created_on')
+        
+        # Calculate average rating for each book associated with the reviews
+        for review in reviews:
+            review.book.average_rating = review.book.ratings.aggregate(average_rating=Avg('rating'))['average_rating'] or 0.0
+    
+    except Exception as e:
+        print(f"Error fetching reviews: {e}")
+        reviews = []
+
+    context = {
+        'reviews': reviews,
+    }
+    return render(request, 'kidsbooks/my_reviews.html', context)
+
+
